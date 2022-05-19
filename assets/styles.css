@@ -1,0 +1,27 @@
+* {
+    margin: 5px;
+}
+
+.jumbotron {
+    background-color: cadetblue;
+}
+
+.search-buttonbox {
+    border-bottom: solid gray 3px;
+    padding-bottom: 10px;
+}
+
+.search-button {
+    background-color: rgb(34, 137, 137);
+    border-radius: 5px;
+    font-size: larger;
+}
+
+.five-day {
+    text-align: center;
+}
+
+.card {
+    color: antiquewhite;
+    background-color: rgb(0, 31, 145);
+}

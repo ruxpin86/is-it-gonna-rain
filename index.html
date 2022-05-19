@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/styles.css">
+    <title>Is it Gonna' Rain?</title>
+</head>
+
+<body>
+    <header>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">Is It Gonna Rain?</h1>
+                <p class="lead">A simple weather dashboard to see if you need that umbrella!
+                </p>
+            </div>
+        </div>
+    </header>
+    <section>
+        <form>
+            <h2>Search for a City:</h2>
+            <div class="form-row">
+                <div class="col-3">
+                    <input id="search-field" type="text" class="form-control" placeholder="City">
+                </div>
+            </div>
+            <div class="col-3 search-buttonbox">
+                <button id="city-search" type="button" class="col-4 btn btn-info">Search City</button>
+            </div>
+        </form><br>
+        <div class="container" style="width:auto; border: solid black 1px;">
+            <div class="card-body">
+                <h3 class="card-current-loc">Todays Forecast for:</h3>
+                <img>
+                <h6 class="card-subtitle mb-2">Temp:</h6>
+                <h6 class="card-subtitle mb-2">Wind:</h6>
+                <h6 class="card-subtitle mb-2">Humidity:</h6>
+                <h6 class="card-subtitle mb-2">UV Index:</h6>
+
+            </div>
+    </section><br>
+    <h2 class="five-day">5 Day Outlook</h2>
+    <section class="container" style="display:flex; justify-content: space-between;">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h4 class="card-title">Date</h4>
+                <img>
+                <h6 class="card-subtitle mb-2 text-muted">Temp:</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Wind:</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Humidity:</h6>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h4 class="card-title">Date</h4>
+                <img>
+                <h6 class="card-subtitle mb-2 text-muted">Temp:</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Wind:</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Humidity:</h6>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h4 class="card-title">Date</h4>
+                <img>
+                <h6 class="card-subtitle mb-2 text-muted">Temp:</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Wind:</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Humidity:</h6>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h4 class="card-title">Date</h4>
+                <img>
+                <h6 class="card-subtitle mb-2 text-muted">Temp:</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Wind:</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Humidity:</h6>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h4 class="card-title">Date</h4>
+                <img>
+                <h6 class="card-subtitle mb-2 text-muted">Temp:</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Wind:</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Humidity:</h6>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <script src="./assets/script.js"></script>
+</body>
+
+</html>
