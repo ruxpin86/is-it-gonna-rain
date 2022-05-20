@@ -12,6 +12,42 @@ var APIkey = "72ce98a0a30c5f78bfd87a65e2630b9d"; //72ce98a0a30c5f78bfd87a65e2630
 console.log("linked");
 var searchField = document.getElementById("search-field");
 var searchBtn = document.getElementById("city-search");
+var currentTemp = document.getElementById("current-temp");
+var currentWind = document.getElementById("current-wind");
+var currentHumidity = document.getElementById("current-humidity");
+var currentUv = document.getElementById("current-uv");
+var currentCity = document.getElementById("current-city");
+var weatherIcon = document.getElementById("weather-icon");
+let dataSet = {};
+
+function setCurrentWeather() {
+  console.log("setCurrentWeather");
+  currentTemp.innerText += " " + dataSet.current.temp;
+  currentWind.innerText += " " + dataSet.current.wind_speed;
+  currentHumidity.innerText += " " + dataSet.current.humidity;
+  currentUv.innerText += " " + dataSet.current.uvi;
+  let uv = dataSet.current.uvi;
+  if (uv < 3) {
+    currentUv.style.color = "green";
+  } else if (uv >= 3 && uv < 6) {
+    currentUv.style.color = "orange";
+  } else {
+    currentUv.style.color = "red";
+  }
+  weatherIcon.src = `http://openweathermap.org/img/wn/${dataSet.current.weather[0].icon}@2x.png`;
+}
+
+function setFiveDay() {
+  dataSet.daily.forEach((element, index) => {
+    if (index <= 4) {
+      document.getElementById(`date-${index}`).innerText += element.temp.day;
+      document.getElementById(`temp-${index}`).innerText += element.temp.day;
+      document.getElementById(`wind-${index}`).innerText += element.wind_speed;
+      document.getElementById(`humidity-${index}`).innerText +=
+        element.humidity;
+    }
+  });
+}
 
 function getCoordsByCity() {
   console.log("get coordinates by city");
@@ -24,6 +60,7 @@ function getCoordsByCity() {
     })
     .then(function (data) {
       console.log(data);
+      currentCity.innerText += " " + data[0].name;
       getWeatherByCoords(data[0].lat, data[0].lon);
       for (var i = 0; i < data.length; i++) {}
     });
@@ -31,7 +68,7 @@ function getCoordsByCity() {
 
 function getWeatherByCoords(lat, lon) {
   console.log("get weather by coords");
-  var requestUrl = `http://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=${5}&appid=${APIkey}`;
+  var requestUrl = `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${APIkey}&units=imperial`;
   fetch(requestUrl, {
     mode: "cors",
   })
@@ -40,7 +77,8 @@ function getWeatherByCoords(lat, lon) {
     })
     .then(function (data) {
       console.log(data);
-      for (var i = 0; i < data.length; i++) {}
+      dataSet = data;
+      setCurrentWeather();
     });
 }
 

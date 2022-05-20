@@ -34,14 +34,14 @@
                 <button id="city-search" type="button" class="col-4 btn btn-info">Search City</button>
             </div>
         </form><br>
-        <div class="container" style="width:auto; border: solid black 1px;">
+        <div class="container" style="width:auto; border: solid black 1px; background-color: rgb(174, 174, 174);">
             <div class="card-body">
-                <h3 class="card-current-loc">Todays Forecast for:</h3>
-                <img>
-                <h6 class="card-subtitle mb-2">Temp:</h6>
-                <h6 class="card-subtitle mb-2">Wind:</h6>
-                <h6 class="card-subtitle mb-2">Humidity:</h6>
-                <h6 class="card-subtitle mb-2">UV Index:</h6>
+                <h2 id="current-city" class="card-current-loc">Todays Forecast for:</h2>
+                <img src="https://placekitten.com/100/100" id="weather-icon" />
+                <h6 id="current-temp" class="card-subtitle mb-2">Temp:</h6>
+                <h6 id="current-wind" class="card-subtitle mb-2">Wind:</h6>
+                <h6 id="current-humidity" class="card-subtitle mb-2">Humidity:</h6>
+                <h6 id="current-uv" class="card-subtitle mb-2">UV Index:</h6>
 
             </div>
     </section><br>
@@ -49,11 +49,11 @@
     <section class="container" style="display:flex; justify-content: space-between;">
         <div class="card" style="width: 18rem;">
             <div class="card-body">
-                <h4 class="card-title">Date</h4>
+                <h4 id="date-0" class="card-title">Date</h4>
                 <img>
-                <h6 class="card-subtitle mb-2 text-muted">Temp:</h6>
-                <h6 class="card-subtitle mb-2 text-muted">Wind:</h6>
-                <h6 class="card-subtitle mb-2 text-muted">Humidity:</h6>
+                <h6 id="temp-0" class="card-subtitle mb-2 text-muted">Temp:</h6>
+                <h6 id="wind-0" class="card-subtitle mb-2 text-muted">Wind:</h6>
+                <h6 id="humidity-0" class="card-subtitle mb-2 text-muted">Humidity:</h6>
             </div>
         </div>
         <div class="card" style="width: 18rem;">
