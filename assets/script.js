@@ -18,7 +18,7 @@ var currentHumidity = document.getElementById("current-humidity");
 var currentUv = document.getElementById("current-uv");
 var currentCity = document.getElementById("current-city");
 var weatherIcon = document.getElementById("weather-icon");
-let dataSet = {};
+var dataSet = {};
 
 function setCurrentWeather() {
   console.log("setCurrentWeather");
@@ -40,7 +40,13 @@ function setCurrentWeather() {
 function setFiveDay() {
   dataSet.daily.forEach((element, index) => {
     if (index <= 4) {
-      document.getElementById(`date-${index}`).innerText += element.temp.day;
+      var date = new Date(element.dt * 1000).toString().split(" ");
+      document.getElementById(
+        `date-${index}`
+      ).innerText = `${date[0]} ${date[1]} ${date[2]}`;
+      document.getElementById(
+        `img-${index}`
+      ).src = `http://openweathermap.org/img/wn/${element.weather[0].icon}@2x.png`;
       document.getElementById(`temp-${index}`).innerText += element.temp.day;
       document.getElementById(`wind-${index}`).innerText += element.wind_speed;
       document.getElementById(`humidity-${index}`).innerText +=
@@ -49,8 +55,16 @@ function setFiveDay() {
   });
 }
 
+function handleNewSearch(term) {
+  let recentSearches = localStorage.getItem("RECENT_SEARCHES") || "[]";
+  let parsedSearches = JSON.parse(recentSearches);
+  parsedSearches.push(term);
+  localStorage.setItem("RECENT_SEARCHES", JSON.stringify(parsedSearches));
+}
+
 function getCoordsByCity() {
   console.log("get coordinates by city");
+  handleNewSearch(searchField.value);
   var city = searchField.value.split(/ +/)[0].replace(",", "");
   var state = searchField.value.split(/ +/)[1].replace(",", "");
   var convertCoordUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${state},&limit=${10}&appid=${APIkey}`;
@@ -79,8 +93,25 @@ function getWeatherByCoords(lat, lon) {
       console.log(data);
       dataSet = data;
       setCurrentWeather();
+      setFiveDay();
     });
 }
+
+function handleRecentSearch(term) {
+  searchField.value = term;
+  getCoordsByCity();
+}
+
+(() => {
+  let recentSearches = localStorage.getItem("RECENT_SEARCHES") || "[]";
+  let parsedSearches = JSON.parse(recentSearches);
+  let pastSearch = document.getElementById("past-search");
+  pastSearch.innerHTML = "";
+  console.log(parsedSearches);
+  parsedSearches.forEach((term) => {
+    pastSearch.innerHTML += `<button onclick="handleRecentSearch('${term}')">${term}</button>`;
+  });
+})();
 
 // var lat
 // var long =
