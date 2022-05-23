@@ -56,8 +56,8 @@ function setFiveDay() {
 }
 
 function handleNewSearch(term) {
-  let recentSearches = localStorage.getItem("RECENT_SEARCHES") || "[]";
-  let parsedSearches = JSON.parse(recentSearches);
+  var recentSearches = localStorage.getItem("RECENT_SEARCHES") || "[]";
+  var parsedSearches = JSON.parse(recentSearches);
   parsedSearches.push(term);
   localStorage.setItem("RECENT_SEARCHES", JSON.stringify(parsedSearches));
 }
@@ -103,9 +103,9 @@ function handleRecentSearch(term) {
 }
 
 (() => {
-  let recentSearches = localStorage.getItem("RECENT_SEARCHES") || "[]";
-  let parsedSearches = JSON.parse(recentSearches);
-  let pastSearch = document.getElementById("past-search");
+  var recentSearches = localStorage.getItem("RECENT_SEARCHES") || "[]";
+  var parsedSearches = JSON.parse(recentSearches);
+  var pastSearch = document.getElementById("past-search");
   pastSearch.innerHTML = "";
   console.log(parsedSearches);
   parsedSearches.forEach((term) => {
